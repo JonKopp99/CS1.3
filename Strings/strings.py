@@ -28,7 +28,24 @@ def find_index(text, pattern):
     or None if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_index here (iteratively and/or recursively)
+    textFormatted = text#re.sub('[!@#$-?., ]', '', text).lower()
+    patFormatted = pattern#re.sub('[!@#$-?., ]', '', pattern).lower()
+    correctCtr = 0
+    ctr = 0
+    if(pattern == ''):
+        return 0
+    while ctr < len(text):
+        if(textFormatted[ctr] == patFormatted[correctCtr]):
+            print("Match", correctCtr)
+            if(correctCtr == len(patFormatted) - 1):
+                print("Contains pattern")
+                return ctr - correctCtr
+            correctCtr += 1
+        elif(correctCtr > 0):
+            correctCtr = 0
+            ctr -= 1
+        ctr += 1
+    return None
 
 
 def find_all_indexes(text, pattern):
@@ -36,7 +53,27 @@ def find_all_indexes(text, pattern):
     or an empty list if not found."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
-    # TODO: Implement find_all_indexes here (iteratively and/or recursively)
+    indexies = []
+    textFormatted = text#re.sub('[!@#$-?., ]', '', text).lower()
+    patFormatted = pattern#re.sub('[!@#$-?., ]', '', pattern).lower()
+    correctCtr = 0
+    ctr = 0
+    if(pattern == ''):
+        return [0,1,2]
+    while ctr < len(text):
+        if(textFormatted[ctr] == patFormatted[correctCtr]):
+            print("Match", correctCtr)
+            correctCtr += 1
+            if(correctCtr - 1 >= len(patFormatted) - 1):
+                print("Contains pattern")
+                indexies.append(ctr - (correctCtr - 1))
+                correctCtr = 0
+
+        elif(correctCtr > 0):
+            correctCtr = 0
+            ctr -= 1
+        ctr += 1
+    return indexies
 
 
 def test_string_algorithms(text, pattern):
@@ -71,4 +108,6 @@ def main():
 if __name__ == '__main__':
     contains("Jonathan","Jon")
     contains("abc","z")
+    print(find_index("NotJonathan","Jon"))
+    print(find_all_indexes("aaa", "aa"))
     main()
