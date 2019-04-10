@@ -1,9 +1,27 @@
+import re
 def contains(text, pattern):
     """Return a boolean indicating whether pattern occurs in text."""
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     # TODO: Implement contains here (iteratively and/or recursively)
-
+    textFormatted = re.sub('[!@#$-?., ]', '', text).lower()
+    patFormatted = re.sub('[!@#$-?., ]', '', pattern).lower()
+    correctCtr = 0
+    ctr = 0
+    if(pattern == ''):
+        return True
+    while ctr < len(text):
+        if(textFormatted[ctr] == patFormatted[correctCtr]):
+            print("Match", correctCtr)
+            if(correctCtr == len(patFormatted) - 1):
+                print("Contains pattern")
+                return True
+            correctCtr += 1
+        elif(correctCtr > 0):
+            correctCtr = 0
+            ctr -= 1
+        ctr += 1
+    return False
 
 def find_index(text, pattern):
     """Return the starting index of the first occurrence of pattern in text,
@@ -51,4 +69,6 @@ def main():
 
 
 if __name__ == '__main__':
+    contains("Jonathan","Jon")
+    contains("abc","z")
     main()
