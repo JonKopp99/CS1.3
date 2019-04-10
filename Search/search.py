@@ -49,7 +49,7 @@ def binary_search_iterative(array, item):
                 right = mid - 1
             else:
                 left = mid + 1
-
+    return None
 
 
 def binary_search_recursive(array, item, left=None, right=None):
