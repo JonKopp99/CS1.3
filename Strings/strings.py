@@ -59,20 +59,22 @@ def find_all_indexes(text, pattern):
     correctCtr = 0
     ctr = 0
     if(pattern == ''):
+        print("Contains none!!!")
         return [0,1,2]
     while ctr < len(text):
         if(textFormatted[ctr] == patFormatted[correctCtr]):
             print("Match", correctCtr)
             correctCtr += 1
-            if(correctCtr - 1 >= len(patFormatted) - 1):
+            if(correctCtr  == len(patFormatted) - 1):
+                print("Counter:", ctr)
                 print("Contains pattern")
                 indexies.append(ctr - (correctCtr - 1))
                 correctCtr = 0
-
+            ctr += 1
         elif(correctCtr > 0):
             correctCtr = 0
-            ctr -= 1
-        ctr += 1
+        else:
+            ctr += 1
     return indexies
 
 
@@ -106,8 +108,8 @@ def main():
 
 
 if __name__ == '__main__':
-    contains("Jonathan","Jon")
-    contains("abc","z")
-    print(find_index("NotJonathan","Jon"))
+    #contains("Jonathan","Jon")
+    #contains("abc","z")
+    #print(find_index("NotJonathan","Jon"))
     print(find_all_indexes("aaa", "aa"))
-    main()
+    #main()
