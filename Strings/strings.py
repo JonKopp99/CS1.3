@@ -54,28 +54,19 @@ def find_all_indexes(text, pattern):
     assert isinstance(text, str), 'text is not a string: {}'.format(text)
     assert isinstance(pattern, str), 'pattern is not a string: {}'.format(text)
     indexies = []
-    textFormatted = text#re.sub('[!@#$-?., ]', '', text).lower()
-    patFormatted = pattern#re.sub('[!@#$-?., ]', '', pattern).lower()
+
+    if (pattern == ''):
+        return list(range(len(text)))
+
     correctCtr = 0
-    ctr = 0
-    if(pattern == ''):
-        print("Contains none!!!")
-        return [0,1,2]
-    while ctr < len(text):
-        if(textFormatted[ctr] == patFormatted[correctCtr]):
-            print("Match", correctCtr)
-            correctCtr += 1
-            if(correctCtr  == len(patFormatted) - 1):
-                print("Counter:", ctr)
-                print("Contains pattern")
-                indexies.append(ctr - (correctCtr - 1))
-                correctCtr = 0
-            ctr += 1
-        elif(correctCtr > 0):
-            correctCtr = 0
-        else:
-            ctr += 1
+    ctr = len(pattern)
+    while ctr <= len(text):
+        if text[correctCtr:ctr] == pattern:
+            indexies.append(correctCtr)
+        correctCtr += 1
+        ctr += 1
     return indexies
+
 
 
 def test_string_algorithms(text, pattern):
