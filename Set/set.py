@@ -4,9 +4,10 @@ class set(object):
     def __init__(self, elements = None):
         self.size = 0
         self.list = []
-        for item in elements:
-            self.size += 1
-            self.list.append(item)
+        if(elements != None):
+            for item in elements:
+                self.size += 1
+                self.list.append(item)
 
     def length(self):
         return self.size
@@ -20,7 +21,7 @@ class set(object):
                 return True
         return False
     def add(self, item):
-        if(sef.contains(item)):
+        if(self.contains(item)):
             return False
         self.list.append(item)
         return True
@@ -30,6 +31,21 @@ class set(object):
                 self.size -= 1
                 return True
             return False
+    def intersection(self, otherSet):
+        newSet = set()
+
+        if(otherSet.length() >= self.length()):
+            smallSet = self
+            bigSet = otherSet
+        else:
+            smallSet = otherSet
+            bigSet = self
+
+        for item in smallSet.list:
+            if bigSet.contains(item):
+                newSet.add(item)
+        return newSet
+
 
 if __name__ == '__main__':
     testAr = [1,3,5,2,4]
@@ -40,3 +56,9 @@ if __name__ == '__main__':
     print(theSet.contains(3))
     print(theSet.length())
     assert theSet.length() == 4
+
+    testAr2 = [1,3,5]
+    theSet2 = set(testAr2)
+    newIntSet = theSet.intersection(theSet2)
+    print(newIntSet.list)
+    assert newIntSet.list == [1, 5]
