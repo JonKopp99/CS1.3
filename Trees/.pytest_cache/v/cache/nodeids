@@ -1,0 +1,6 @@
+[
+  "binaryTreeTests.py::BinaryTreeNodeTest::test_height",
+  "binaryTreeTests.py::BinaryTreeNodeTest::test_init",
+  "binaryTreeTests.py::BinaryTreeNodeTest::test_is_branch",
+  "binaryTreeTests.py::BinaryTreeNodeTest::test_is_leaf"
+]
