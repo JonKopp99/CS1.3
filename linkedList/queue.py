@@ -27,7 +27,7 @@ class LinkedQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???)  Why? [TODO]"""
+        O(1) always because adding elements are constant time"""
         self.list.append(item)
 
     def front(self):
@@ -41,7 +41,7 @@ class LinkedQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???)  Why? [TODO]"""
+        o(N)becasue the linked list will have to go through to update its pointers"""
         if self.list.head == None:
             raise ValueError('Empty')
         item = self.list.head.data
@@ -77,7 +77,7 @@ class ArrayQueue(object):
 
     def enqueue(self, item):
         """Insert the given item at the back of this queue.
-        Running time: O(???)  Why? [TODO]"""
+        O(1)because adding an elemnt is constant time in arrays"""
         self.list.append(item)
 
     def front(self):
@@ -90,7 +90,8 @@ class ArrayQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Running time: O(???)  Why? [TODO]"""
+        Averages O(1) but can take closer to O(N) if the element is towards
+        the end of the array."""
         if self.length() < 0:
             raise ValueError('List is empty')
         item = self.list[0]
