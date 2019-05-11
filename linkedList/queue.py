@@ -83,7 +83,7 @@ class ArrayQueue(object):
     def front(self):
         """Return the item at the front of this queue without removing it,
         or None if this queue is empty."""
-        if(length() > 0):
+        if(self.length() > 0):
             return self.list[0]
         return None
 
@@ -92,15 +92,15 @@ class ArrayQueue(object):
         or raise ValueError if this queue is empty.
         Averages O(1) but can take closer to O(N) if the element is towards
         the end of the array."""
-        if self.length() < 0:
+        if self.is_empty():
             raise ValueError('List is empty')
+
         item = self.list[0]
         self.list.pop(0)
-
         return item
 
 
 # Implement LinkedQueue and ArrayQueue above, then change the assignment below
 # to use each of your Queue implementations to verify they each pass all tests
-Queue = LinkedQueue
-# Queue = ArrayQueue
+#Queue = LinkedQueue
+Queue = ArrayQueue
