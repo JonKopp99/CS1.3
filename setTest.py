@@ -52,6 +52,21 @@ class setTest(unittest.TestCase):
         assert theSet1.remove("c") == True
         assert theSet1.union(theSet2).list == ["d", "e", "f", "g", "a", "b"]
 
+    def testDifference(self):
+        print("Testing difference!")
+        theSet1 = set([1,3,5,2,4])
+        theSet2 = set([1,3,5])
+        assert theSet2.difference(theSet1).list == [2,4]
+        theSet1 = set(["a", "b", "c"])
+        theSet2 = set(["a", "b", "c", "g"])
+        assert theSet2.difference(theSet1).list == ["g"]
+        theSet1 = set([1,3,5,2])
+        theSet2 = set([1,3,5])
+        assert theSet2.difference(theSet1).list == [2]
+        theSet1 = set(["a", "b", "c"])
+        theSet2 = set(["a", "b", "c", "h"])
+        assert theSet2.difference(theSet1).list == ["h"]
+
     def testIsSubset(self):
         print("Testing is_subset!")
         theSet1 = set([1,3,5,2,4])
