@@ -73,7 +73,7 @@ class LinkedList(object):
         curNode = self.head
         while(ctr <= index):
             if(ctr == index):
-                return curNode
+                return curNode.data
             else:
                 curNode = curNode.next
             ctr += 1
@@ -87,13 +87,16 @@ class LinkedList(object):
 
         if not (0 <= index <= self.size):
             raise ValueError('List index out of range: {}'.format(index))
-        self.size += 1
+
         if index == 0:
             self.prepend(item)
+            return
         elif index == self.size:
             self.append(item)
+            return
 
         else:
+            self.size += 1
             prevNode = self.head
 
             ctr = 0
@@ -166,16 +169,17 @@ class LinkedList(object):
             self.head.data = new_item
             return
         elif(self.tail.data == old_item):
-            self.tail.data == new_item
+            self.tail.data = new_item
             return
-        else:
-            node = self.head
-            while node != None:
-                if(node.data == old_item):
-                    node.data = new_item
-                    return
-                else:
-                    node = node.next
+
+        node = self.head
+        while node != None:
+            if(node.data == old_item):
+                node.data = new_item
+                return
+
+            node = node.next
+
         raise ValueError('No {} item in list :('.format(old_item))
 
     def delete(self, item):

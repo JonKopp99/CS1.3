@@ -73,6 +73,9 @@ class LinkedListTest(unittest.TestCase):
 
     def test_get_at_index(self):
         ll = LinkedList(['A', 'B', 'C'])
+        print(ll.get_at_index(0))
+        print(ll.get_at_index(1))
+        print(ll.get_at_index(2))
         assert ll.get_at_index(0) == 'A'  # head item
         assert ll.get_at_index(1) == 'B'  # middle item
         assert ll.get_at_index(2) == 'C'  # tail item
@@ -86,6 +89,7 @@ class LinkedListTest(unittest.TestCase):
         ll.insert_at_index(0, 'B')  # append('B')
         assert ll.head.data == 'B'  # new head (at index 0)
         assert ll.tail.data == 'B'  # new tail (at index 0)
+        print("SIZE: ", ll.size)
         assert ll.size == 1
         ll.insert_at_index(0, 'A')  # prepend('A')
         assert ll.head.data == 'A'  # new head (at index 0)
