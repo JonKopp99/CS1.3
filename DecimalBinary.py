@@ -1,5 +1,4 @@
 #!python
-
 import string
 # Hint: Use these string constants to encode/decode hexadecimal digits and more
 # string.digits is '0123456789'
@@ -37,18 +36,27 @@ def encode(number, base):
     assert 2 <= base <= 36, 'base is out of range: {}'.format(base)
     # Handle unsigned numbers only for now
     assert number >= 0, 'number is negative: {}'.format(number)
+    if number == 0:
+        return "0"
     final_hex = []
-    hex = string.digits + string.ascii_uppercase + "+/"
-    if base == 64:
-        print("Base64")
-        hex = string.ascii_uppercase + string.lowercase + string.digits + "+/"
+    hex = string.printable
     while number != 0:
-        r = number%base
+        r = number % base
         final_hex.append(hex[r])
         number = number//base
     final_hex = final_hex[::-1] #reverses the array
     final_number_string = "".join(final_hex)
     return final_number_string
+    # converted_value = ""
+    # if number == 0:
+    #     return "0"
+    #
+    # while number != 0:
+    #     remainder = string.printable[number % base]
+    #     converted_value = str(remainder) + converted_value
+    #     number = number // base
+    #
+    # return converted_value
 
 
 def convert(digits, base1, base2):

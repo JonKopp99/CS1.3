@@ -1,4 +1,4 @@
-from Decimal-Binary import decode, encode, convert
+from DecimalBinary import decode, encode, convert
 import unittest
 
 

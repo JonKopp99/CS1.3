@@ -41,7 +41,7 @@ class LinkedQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        o(N)becasue the linked list will have to go through to update its pointers"""
+        o(1)becasue the linked list will only have to delete head"""
         if self.list.head == None:
             raise ValueError('Empty')
         item = self.list.head.data
@@ -90,7 +90,7 @@ class ArrayQueue(object):
     def dequeue(self):
         """Remove and return the item at the front of this queue,
         or raise ValueError if this queue is empty.
-        Averages O(1) but can take closer to O(N) if the element is towards
+         O(N) if the element is towards
         the end of the array."""
         if self.is_empty():
             raise ValueError('List is empty')
