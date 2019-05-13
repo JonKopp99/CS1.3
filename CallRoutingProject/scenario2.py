@@ -1,6 +1,8 @@
 """
-You have a carrier route list with 100,000 (100K) entries (in arbitrary order) and a
-single phone number. How quickly can you find the cost of calling this number?
+You have a carrier route list with 100,000 (100K) entries (in arbitrary order)
+and a list of 1000 phone numbers. How can you operationalize the route cost
+lookup problem?
+
 1)Seperate 1000 phone#'s into array'
 2)Split the routes into a dictionary for constant time Searching
     -When splitting seperate by comma
@@ -27,8 +29,7 @@ def splitIntoDict(path):
              theDict[mylist[0]] = mylist[1]
     return theDict
 
-#O(1) Best case if the phone number is a route
-#O(n) N being lenth of phonenumber string if there are not matches for routes
+#Averags O(m * n) where M is the length of the array and n is length of the phone number
 def findMatches(pn, theDict):
     for phoneNum in pn:
         ctr = len(phoneNum) - 1
