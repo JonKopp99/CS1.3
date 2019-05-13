@@ -1,3 +1,5 @@
+import resource
+import platform
 """
 You have a carrier route list with 100,000 (100K) entries (in arbitrary order) and a
 single phone number. How quickly can you find the cost of calling this number?
@@ -42,3 +44,9 @@ if __name__ == '__main__':
     theDict = splitIntoDict('rc100.txt')
     #print(theDict)
     print(findMatches("+18017154269", theDict))
+
+    usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    usage=round(usage/float(1<<20),2)
+
+# print memory usage
+    print("Memory Usage: {} mb.".format(usage))

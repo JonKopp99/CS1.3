@@ -1,3 +1,5 @@
+import resource
+import platform
 """
 You have a carrier route list with 100,000 (100K) entries (in arbitrary order)
 and a list of 1000 phone numbers. How can you operationalize the route cost
@@ -51,3 +53,8 @@ if __name__ == '__main__':
     theDict = splitIntoDict('rc100.txt')
     #print(theDict)
     print(findMatches(theArray, theDict))
+    usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    usage=round(usage/float(1<<20),2)
+
+# print memory usage
+    print("Memory Usage: {} mb.".format(usage))
