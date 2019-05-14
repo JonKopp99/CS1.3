@@ -10,41 +10,36 @@ single phone number. How quickly can you find the cost of calling this number?
 2)Loop through len(phone#)substringing last # off every iteraiton
 3)If []results ->helper function to find lowest route cost
 """
-#O(n)where n is the length of the words
-def splitIntoDict(path):
-    with open(path) as file:
+#O(3n) = 0(n)
+def splitIntoArray(path, pn):
+    with open(path) as file: #0(n)
         lines = file.read().splitlines()
-    theDict = {}
-    for line in lines:
+    theRoutes = []
+    theCosts = []
+    for line in lines: #0(n)
         mylist = line.split(',')
-        if(mylist[0] in theDict.keys()):
-            oldVal = theDict[mylist[0]]
-            if(oldVal > mylist[1]):
-                theDict[mylist[0]] = mylist[1]
-        else:
-             theDict[mylist[0]] = mylist[1]
-    return theDict
-
-#O(1) Best case if the phone number is a route
-#O(n) N being lenth of phonenumber string if there are not matches for routes
-def findMatches(pn, theDict):
+        theRoutes.append(mylist[0])
+        theCosts.append(mylist[1])
     ctr = len(pn) - 1
-    #print(theDict.keys())
-    while(ctr > 1):
+    while(ctr > 1): #0(phoneNumber length)
         s = pn[0:ctr]
-        print(s)
-        if(s in theDict.keys()):
-            return theDict[s]
+        indexes = []
+        curIndex = 0
+        for route in theRoutes:#0(n)
+            if(route == s):
+                indexes.append(curIndex)
+                print("Found")
+            curIndex += 1
+        if(len(indexes) > 0):
+            lowestCost = 999999
+            for i in indexes:#0(number of identical indexes)
+                if(float(theCosts[i]) < lowestCost):
+                    lowestCost = theCosts[i]
+            return lowestCost
         ctr -= 1
-    return None
-
-
 
 if __name__ == '__main__':
-    theDict = splitIntoDict('rc100.txt')
-    #print(theDict)
-    print(findMatches("+18017154269", theDict))
-
+    print(splitIntoArray('rc100.txt', '+18017154269'))
     usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
     usage=round(usage/float(1<<20),2)
 

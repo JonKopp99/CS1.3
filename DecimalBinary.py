@@ -47,16 +47,6 @@ def encode(number, base):
     final_hex = final_hex[::-1] #reverses the array
     final_number_string = "".join(final_hex)
     return final_number_string
-    # converted_value = ""
-    # if number == 0:
-    #     return "0"
-    #
-    # while number != 0:
-    #     remainder = string.printable[number % base]
-    #     converted_value = str(remainder) + converted_value
-    #     number = number // base
-    #
-    # return converted_value
 
 
 def convert(digits, base1, base2):
