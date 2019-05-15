@@ -9,6 +9,7 @@ single phone number. How quickly can you find the cost of calling this number?
     -Check if newValue < oldVal only update if its less
 2)Loop through len(phone#)substringing last # off every iteraiton
 3)If []results ->helper function to find lowest route cost
+#Worked on with Ramon Geronimo
 """
 #O(3n) = 0(n)
 def splitIntoArray(path, pn):
