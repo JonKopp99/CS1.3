@@ -11,6 +11,7 @@ lookup problem?
     -Check if newValue < oldVal only update if its less
 3)Loop through len([phone#s])substringing last # off every iteraiton
 4)If []results ->helper function to find lowest route cost
+#Worked on with Ramon Geronimo
 """
 def splitIntoArray(path):
     with open(path) as file:

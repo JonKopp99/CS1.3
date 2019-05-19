@@ -73,9 +73,9 @@ class LinkedListTest(unittest.TestCase):
 
     def test_get_at_index(self):
         ll = LinkedList(['A', 'B', 'C'])
-        print(ll.get_at_index(0))
-        print(ll.get_at_index(1))
-        print(ll.get_at_index(2))
+        # print(ll.get_at_index(0))
+        # print(ll.get_at_index(1))
+        # print(ll.get_at_index(2))
         assert ll.get_at_index(0) == 'A'  # head item
         assert ll.get_at_index(1) == 'B'  # middle item
         assert ll.get_at_index(2) == 'C'  # tail item
